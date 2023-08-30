@@ -22,7 +22,7 @@ export class UserService {
     return user;
   }
 
-  async getAllUsers(): Promise<Users[]> {
+  async getAllUsers(): Promise<User[]> {
     return this.users;
   }
 }

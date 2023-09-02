@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CityModule } from './city/city.module';
 import { StateModule } from './state/state.module';
 import { AddressModule } from './address/address.module';
+import { CacheModule } from './cache/cache.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { AddressModule } from './address/address.module';
     CityModule,
     StateModule,
     AddressModule,
+    CacheModule,
   ],
   controllers: [],
   providers: [],

@@ -3,6 +3,7 @@ import {
   CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity({ name: 'user' })
@@ -23,6 +24,6 @@ export default class UserEntity {
   password: string;
   @CreateDateColumn({ name: 'created_at', nullable: false })
   createdAt: Date;
-  @CreateDateColumn({ name: 'updated_at', nullable: false })
+  @UpdateDateColumn({ name: 'updated_at', nullable: false })
   updatedAt: Date;
 }

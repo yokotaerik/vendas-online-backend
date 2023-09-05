@@ -1,7 +1,9 @@
+import { AddressEntity } from 'src/address/entities/address.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -26,4 +28,6 @@ export default class UserEntity {
   createdAt: Date;
   @UpdateDateColumn({ name: 'updated_at', nullable: false })
   updatedAt: Date;
+  @OneToMany(() => AddressEntity, (address) => address.user)
+  addresses?: AddressEntity[];
 }

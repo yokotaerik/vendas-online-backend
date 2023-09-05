@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 import { AddressService } from './address.service';
 import { CreateAddressDto } from './dtos/CreateAddress.dto';
-import { AddressEntity } from './entities/adress.entity';
+import { AddressEntity } from './entities/address.entity';
 
 @Controller('address')
 export class AddressController {

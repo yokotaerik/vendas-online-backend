@@ -35,4 +35,9 @@ export class UserController {
       await this.userService.getUserIdUsingRelations(userId),
     );
   }
+
+  // @Get('/:userId')
+  // async getUserById(@Param('userId') userId: number): Promise<UserEntity> {
+  //   return await this.userService.getUserIdUsingRelations(userId);
+  // }
 }

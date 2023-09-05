@@ -4,10 +4,12 @@ import { CityController } from './city.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CityEntity } from './entities/city.entity';
 import { CacheModule } from 'src/cache/cache.module';
+import { AddressService } from 'src/address/address.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([CityEntity]), CacheModule],
   providers: [CityService],
   controllers: [CityController],
+  exports: [CityService],
 })
 export class CityModule {}

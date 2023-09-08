@@ -1,15 +1,17 @@
 import { JwtService } from '@nestjs/jwt';
 import { Test, TestingModule } from '@nestjs/testing';
-import { ReturnUserDto } from '../../user/dtos/returnUser.dto';
 import { UserService } from '../../user/user.service';
 import { userEntityMock } from '../../user/__mocks__/user.mock';
 import { AuthService } from '../auth.service';
 import { jwtMock } from '../__mocks__/jwt.mock';
 import { LoginDtoMock } from '../__mocks__/loginDto.mock';
+import { ReturnUserDto } from '../../user/dtos/returnUser.dto';
+import { LoginPayload } from '../dto/loginPaylod.dto';
 
 describe('AuthService', () => {
   let service: AuthService;
   let userService: UserService;
+  let jwtService: JwtService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -24,7 +26,7 @@ describe('AuthService', () => {
         {
           provide: JwtService,
           useValue: {
-            signAsync: () => jwtMock,
+            signAsync: jest.fn().mockResolvedValue(jwtMock),
           },
         },
       ],
@@ -32,18 +34,22 @@ describe('AuthService', () => {
 
     service = module.get<AuthService>(AuthService);
     userService = module.get<UserService>(UserService);
+    jwtService = module.get<JwtService>(JwtService);
   });
 
   it('should be defined', () => {
     expect(service).toBeDefined();
     expect(userService).toBeDefined();
+    expect(jwtService).toBeDefined();
   });
 
-  it('should return user if password and email valid', async () => {
+  it('should login user', async () => {
     const user = await service.login(LoginDtoMock);
 
     expect(user).toEqual({
-      accessToken: jwtMock,
+      accessToken: await jwtService.signAsync({
+        ...new LoginPayload(userEntityMock),
+      }),
       user: new ReturnUserDto(userEntityMock),
     });
   });

@@ -90,4 +90,16 @@ describe('CategoryService', () => {
       service.findCategoryByName(categoryMock.name),
     ).rejects.toThrowError();
   });
+
+  it('should return a category by id', async () => {
+    const category = await service.findCategoryById(categoryMock.id);
+
+    expect(category).toEqual(categoryMock);
+  });
+
+  it('should return a error on find category by id', async () => {
+    jest.spyOn(categoryRepository, 'findOne').mockRejectedValue(new Error());
+
+    expect(service.findCategoryById(categoryMock.id)).rejects.toThrowError();
+  });
 });

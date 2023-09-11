@@ -4,6 +4,7 @@ import { ProductEntity } from './entities/product.entity';
 import { DeleteResult, Repository } from 'typeorm';
 import { CreateProductDto } from './dtos/createProduct.dto';
 import { CategoryService } from '../category/category.service.';
+import { UpdateProductDto } from './dtos/updateProduct.dto';
 
 @Injectable()
 export class ProductService {
@@ -38,23 +39,35 @@ export class ProductService {
     });
   }
 
-  async findProductById(id: number): Promise<ProductEntity> {
+  async findProductById(productId: number): Promise<ProductEntity> {
     const product = await this.ProductRepository.findOne({
       where: {
-        id: id,
+        id: productId,
       },
     });
 
     if (!product) {
-      throw new NotFoundException('Cannot find product');
+      throw new NotFoundException(`Product id: ${productId} not found`);
     }
 
     return product;
   }
 
-  async deleteProduct(id: number): Promise<DeleteResult> {
-    const product = await this.findProductById(id);
+  async deleteProduct(productId: number): Promise<DeleteResult> {
+    await this.findProductById(productId);
 
-    return this.ProductRepository.delete({ id: product.id });
+    return this.ProductRepository.delete({ id: productId });
+  }
+
+  async updateProduct(
+    updateProduct: UpdateProductDto,
+    productId: number,
+  ): Promise<ProductEntity> {
+    const product = await this.findProductById(productId);
+
+    return this.ProductRepository.save({
+      ...product,
+      ...updateProduct,
+    });
   }
 }

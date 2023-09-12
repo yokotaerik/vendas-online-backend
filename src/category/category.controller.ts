@@ -18,6 +18,7 @@ import { CreateCategoryDto } from './dtos/createCategory.dto';
 export class CategoryController {
   constructor(private readonly service: CategoryService) {}
 
+  @Roles(UserType.User, UserType.Admin)
   @Get()
   async findAllCategories(): Promise<ReturnCategory[]> {
     const categories = await this.service.findAllCategories();

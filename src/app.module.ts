@@ -12,11 +12,12 @@ import { RolesGuard } from './guards/roles.guards';
 import { JwtModule } from '@nestjs/jwt';
 import { CategoryModule } from './category/category.module';
 import { ProductModule } from './product/product.module';
+import { CartModule } from './cart/cart.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: ['.env.development.local', '.env.development'],
+      envFilePath: ['.env.development.local'],
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
@@ -26,7 +27,7 @@ import { ProductModule } from './product/product.module';
       port: Number(process.env.DB_PORT),
       username: process.env.DB_USERNAME,
       entities: [`${__dirname}/**/*.entity{.js,.ts}`],
-      migrations: [`${__dirname}/migrations/{.ts,*.js}`],
+      migrations: [`${__dirname}/migration/{.ts,*.js}`],
       migrationsRun: true,
     }),
     UserModule,
@@ -38,6 +39,7 @@ import { ProductModule } from './product/product.module';
     JwtModule,
     CategoryModule,
     ProductModule,
+    CartModule,
   ],
   controllers: [],
   providers: [

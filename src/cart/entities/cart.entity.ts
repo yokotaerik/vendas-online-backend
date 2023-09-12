@@ -1,10 +1,14 @@
+import { CartProductEntity } from '../../cart-product/entities/cart-product.entity';
 import {
   Column,
   CreateDateColumn,
+  Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
+@Entity({ name: 'cart' })
 export class CartEntity {
   @PrimaryGeneratedColumn('rowid')
   id: number;
@@ -17,4 +21,10 @@ export class CartEntity {
 
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
+
+  @OneToMany(
+    () => CartProductEntity,
+    (cartProductEntity) => cartProductEntity.cart,
+  )
+  cartProduct?: CartProductEntity[];
 }

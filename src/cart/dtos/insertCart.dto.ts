@@ -5,5 +5,5 @@ export class InsertCartDTO {
   productId: number;
 
   @IsNumber()
-  ammount: number;
+  amount: number;
 }

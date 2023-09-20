@@ -4,8 +4,8 @@ import { CartProductEntity } from './entities/cart-product.entity';
 import { DeleteResult, Repository } from 'typeorm';
 import { CartEntity } from '../cart/entities/cart.entity';
 import { InsertCartDTO } from '../cart/dtos/insertCart.dto';
-import { ProductService } from 'src/product/product.service';
-import { UpdateCartDTO } from 'src/cart/dtos/updateCart.dto';
+import { ProductService } from '../product/product.service';
+import { UpdateCartDTO } from '../cart/dtos/updateCart.dto';
 
 @Injectable()
 export class CartProductService {

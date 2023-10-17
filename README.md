@@ -34,13 +34,13 @@ Um sistema de e-commerce funcional completo
 
   Criar um projeto back-end de maior complexidade, para compreender melhor o back-end de uma aplicação, criando testes unitários e resolvendo possiveis erros assim aprofundando meus conhecimentos em TypeScript, ORM's, Node.JS e lógica e organização de projetos.
 
-## Installation
+## Instalação
 
 ```bash
 $ npm install
 ```
 
-## Running the app
+## Iniciar o App
 
 ```bash
 # development
@@ -53,7 +53,7 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
+## Testes
 
 ```bash
 # unit tests
@@ -65,16 +65,6 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
 ## License
 

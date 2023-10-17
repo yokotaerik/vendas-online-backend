@@ -2,7 +2,7 @@
 
 
 ## Objetivo: <br/>
-Um sistema de e-commerce funcional completo
+Um sistema de e-commerce funcional
 
 ## Funcionalidades: <br/>
   Criar usuários que são os administradores e clientes. <br/>
